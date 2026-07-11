@@ -1,0 +1,42 @@
+Structure of my protocol
+
+COORD from A1-J10
+4 bits for letter and 4 bits for num
+A is 0000 to convert add 65 to value
+
+placing ships
+PLACE COORD DIR LEN 
+4b 8b 1b 3b
+
+attacking ships
+ATTACK COORD
+8b 8b
+
+we can use 4 bits for each command in an enum
+
+COORD - 0000 0000
+
+--- Client Side Requests ---
+PLACE + COORD DIR LEN - 0000 1001 + 0000 0000 0000 0000 (3 bytes)
+a full place all command will look like this:
+
+0000 1001
+0000 0000 0000 0010
+0000 0000 0000 0011
+0000 0000 0000 0100
+0000 0000 0000 0101
+COORD     DIR  LEN
+(1 + 4 * 2) 9 bytes in total
+
+ATTACK - 0000 1010 (1 byte)
+
+--- Server Return Values (1 byte) ---
+INVALID - 0000 0000 
+HIT - 0000 0001 
+MISS - 0000 0010
+SUNK2 - 0010 0011 
+SUNK3 - 0011 0011 
+SUNK4 - 0100 0011
+SUNK5 - 0101 0011 
+WIN - 0000 0100 
+LOSE - 0000 0101 
