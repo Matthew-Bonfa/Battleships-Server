@@ -1,5 +1,5 @@
 # Battleships-Server
-Contains a client and a server to play battleships on using TLS sockets. This was a part of an assingment from The University of Melbourne's Computer Systems (COMP30023) subject. 
+Contains a client and a server to play battleships on using TCP sockets. This was a part of an assingment from The University of Melbourne's Computer Systems (COMP30023) subject. 
 
 # Run
 Run make clean && make to complie server.c and client.c 
